@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Label id="lblStart" layoutX="23.0" layoutY="22.0" text="처음별" />
+            <Label id="lblLast" layoutX="23.0" layoutY="53.0" text="끝별" />
+            <TextField id="tfStart" layoutX="72.0" layoutY="18.0" />
+            <TextField id="tfLast" layoutX="72.0" layoutY="49.0" />
+            <Button id="btn" layoutX="224.0" layoutY="18.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" text="출력" />
+            <TextArea id="ta" layoutX="23.0" layoutY="86.0" prefHeight="200.0" prefWidth="255.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

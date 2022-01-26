@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="405.0" prefWidth="261.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="405.0" prefWidth="263.0">
+         <children>
+            <Button id="btn" layoutX="36.0" layoutY="77.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="193.0" text="출력하기" />
+            <Label id="lbl" layoutX="36.0" layoutY="36.0" text="단수" />
+            <TextField id="tf" layoutX="91.0" layoutY="32.0" />
+            <TextArea id="ta" layoutX="32.0" layoutY="113.0" prefHeight="273.0" prefWidth="202.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
