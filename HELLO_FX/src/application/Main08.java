@@ -15,7 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 
-public class Main8 extends Application {
+public class Main08 extends Application {
 	
 	TextField tfs;
 	TextField tfl;
@@ -24,7 +24,7 @@ public class Main8 extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main8.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main08.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

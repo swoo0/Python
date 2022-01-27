@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 		
-public class Main9 extends Application {
+public class Main09 extends Application {
 	
 	TextField tf;
 	Button btn1;
@@ -30,7 +30,7 @@ public class Main9 extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main9.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main09.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

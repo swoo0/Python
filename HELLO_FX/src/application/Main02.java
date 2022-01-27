@@ -11,11 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 
-public class Main extends Application {
+public class Main02 extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main02.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -26,9 +26,10 @@ public class Main extends Application {
 			btn.setOnMouseClicked(new EventHandler<Event>() {
 				@Override
 				public void handle(Event event) {
-					System.out.println("click");
-					lbl.setText("GoodEvening");
-					
+					String num = lbl.getText();
+					int cnt = Integer.parseInt(num);
+					cnt++;
+					lbl.setText(cnt + "");
 				}
 			});
 			

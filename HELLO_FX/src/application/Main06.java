@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
-public class Main6 extends Application {
+public class Main06 extends Application {
 	
 	TextField tf;
 	TextArea ta;

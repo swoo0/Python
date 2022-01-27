@@ -16,7 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Main5 extends Application {
+public class Main05 extends Application {
 	
 	private Label lbl1;
 	private Label lbl2;
@@ -28,7 +28,7 @@ public class Main5 extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main5.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main05.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
