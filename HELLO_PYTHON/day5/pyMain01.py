@@ -12,9 +12,9 @@ class MyWindow(QMainWindow, form_class):
         self.setupUi(self)
         self.count = 1
         
-        self.btn.clicked.connect(self.btnClick)
+        self.btn.clicked.connect(self.pbClick)
 
-    def btnClick(self):
+    def pbClick(self):
         if self.count % 2 == 0:
             self.lbl.setText("Good Moning")
             self.count += 1

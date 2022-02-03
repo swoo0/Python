@@ -12,9 +12,9 @@ class MyWindow(QMainWindow, form_class):
         super().__init__()
         self.setupUi(self)
         
-        self.btn.clicked.connect(self.btnClick)
+        self.btn.clicked.connect(self.pbClick)
         
-    def btnClick(self):
+    def pbClick(self):
         arr45 = [
             1,2,3,4,5,       6,7,8,9,10,
             11,12,13,14,15,  16,17,18,19,20,
@@ -49,7 +49,7 @@ class MyWindow(QMainWindow, form_class):
         
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Return :
-            self.btnClick()
+            self.pbClick()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

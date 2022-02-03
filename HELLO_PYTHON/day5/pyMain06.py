@@ -2,7 +2,6 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
-import random
 from PyQt5.Qt import Qt
 
 form_class = uic.loadUiType("pyMain06.ui")[0]
@@ -12,10 +11,10 @@ class MyWindow(QMainWindow, form_class):
         super().__init__()
         self.setupUi(self)
         
-        self.pb.clicked.connect(self.btnClick)
-        self.le.returnPressed.connect(self.btnClick)
+        self.pb.clicked.connect(self.pbClick)
+        self.le.returnPressed.connect(self.pbClick)
 
-    def btnClick(self):
+    def pbClick(self):
         dan = self.le.text()
         idan = int(dan)
         gop = 10
@@ -29,7 +28,7 @@ class MyWindow(QMainWindow, form_class):
         
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Return :
-            self.btnClick()
+            self.bpbClick)
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
