@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+-----------str-----------<br>
+view <br>
+{{a}}
+<br>	
+-----------arr-----------<br>
+{% for i in b %}
+{{i}}<br>
+{% endfor %}
+-----------dict-----------<br>
+<!-- {% for k, v in c.items() %}
+	{{ k }} : {{ v }}
+{% endfor %} -->
+
+{{c.e_id}}
+{{c.e_name}}
+{{c.sex}}
+{{c.age}}<br>
+-----------arr dict-----------<br>
+<!-- {% for i in d %}
+	{% for k, v in i.items() %}
+		{{ k }} : {{ v }}
+	{% endfor %}
+	<br>
+{% endfor %} -->
+
+{% for i in d %}
+	{{i.e_id}}
+	{{i.e_name}}
+	{{i.sex}}
+	{{i.age}}<br>
+{% endfor %}
+
+</body>
+</html>

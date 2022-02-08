@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../static/js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+/* function setdata(e_id,e_name,sex,age) {
+	console.log(e_id,e_name,sex,age);
+	var obj_e_id = document.getElementById("e_id");
+	var obj_e_name = document.getElementById("e_name");
+	var obj_sex = document.getElementById("sex");
+	var obj_age = document.getElementById("age");
+
+	obj_e_id.value = e_id;
+	obj_e_name.value = e_name;
+	obj_sex.value = sex;
+	obj_age.value = age;
+} */
+
+$(document).on('mouseover', '.vline', function() {
+	$(this).css({
+		"background-color" : "lightblue",
+		"cursor" : "pointer"
+	});
+});
+$(document).on('mouseout', '.vline', function() {
+	$(this).css({
+		"background-color" : "white"
+	});
+});
+
+function setdata(e_id,e_name,sex,age) {
+	console.log(e_id,e_name,sex,age);
+
+	var obj_e_id = $('#e_id')
+	var obj_e_name = $('#e_name')
+	var obj_sex = $('#sex')
+	var obj_age = $('#age') 
+	
+	obj_e_id.val(e_id)
+	obj_e_name.val(e_name)
+	obj_sex.val(sex)
+	obj_age.val(age)
+}	
+	
+</script>
+
+
+</head>
+<body>
+
+<table border="1px">
+	<tr>
+		<th>사번</th>
+		<th>이름</th>
+		<th>성별</th>
+		<th>나이</th>
+	</tr>		
+
+{% for e in mylist %}
+	<tr class="vline">
+		<td><a href="javascript:setdata('{{e.e_id}}','{{e.e_name}}','{{e.sex}}','{{e.age}}')">{{e.e_id}}</a></td>
+		<td>{{e.e_name}}</td>
+		<td>{{e.sex}}</td>
+		<td>{{e.age}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<br>
+<br>
+ 
+<table border="1px">
+	<tr>
+		<td>아이디</td>
+		<td><input type="text" id="e_id" size="7" /></td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td><input type="text" id="e_name" size="7" /></td>
+	</tr>
+	<tr>
+		<td>성별</td>
+		<td><input type="text" id="sex" size="7" /></td>
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td><input type="text" id="age" size="7" /></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="추가" />
+			<input type="button" value="수정" />
+			<input type="button" value="삭제" />
+		</td>
+	</tr>
+
+</table>
+
+
+
+
+</body>
+</html>
