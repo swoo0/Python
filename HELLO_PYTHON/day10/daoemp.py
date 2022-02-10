@@ -85,6 +85,6 @@ if __name__=="__main__" :
     # print("cnt", cnt)
     # cnt = de.myupdate(13, 7, 7, 7)
     # print("cnt", cnt)
-    cnt = de.mydelete(13)
-    print("cnt", cnt)
+    # cnt = de.mydelete(13)
+    # print("cnt", cnt)
     

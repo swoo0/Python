@@ -7,13 +7,15 @@ print(mysrc.text)
 print("-----------------------------------------------------------")
 # print(soup)
 
-mytable = soup.find_all("table")[0]
-trs = mytable.find_all("tr")
-for idx,i in enumerate(trs):
+# print(soup.select(".vline")[0].get_text())
+
+mytables = soup.select("table")[0]
+
+trs = mytables.select("tr")
+
+for idx,tr in enumerate(trs):
     if idx > 0:
-        tds = i.find_all("td")
-        print(tds[0].text,end="\t")
-        print(tds[1].text,end="\t")
-        print(tds[2].text,end="\t")
-        print(tds[3].text)
+        td4 = tr.select("td")
+        print(td4[0].text,td4[1].text,td4[2].text,td4[3].text)
+
 
