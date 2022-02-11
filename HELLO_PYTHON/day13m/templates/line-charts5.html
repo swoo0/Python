@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Line Charts and Options</title>
+
+<link class="include" rel="stylesheet" type="text/css" 	href="../jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="examples.min.css" />
+<link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCoreDefault.min.css" />
+<link type="text/css" rel="stylesheet" 	href="syntaxhighlighter/styles/shThemejqPlot.min.css" />
+
+<script class="include" type="text/javascript" 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<script class="code" type="text/javascript">
+	$(document).ready(function() {
+		var plot1 = $.jqplot('chart1', [ [ 3, 7, 9, 1, 5, 3, 8, 2, 5 ] ]);
+	});
+</script>
+
+<body>
+
+	<div id="chart1" style="height: 300px; width: 500px;"></div>
+
+
+
+
+	<script class="include" type="text/javascript" src="../jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="syntaxhighlighter/scripts/shCore.min.js"></script>
+	<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+	<script type="text/javascript" 	src="syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+
+	<script class="include" type="text/javascript" src="../plugins/jqplot.canvasTextRenderer.min.js"></script>
+	<script class="include" type="text/javascript" 	src="../plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+	<script type="text/javascript" src="example.min.js"></script>
+
+</body>
+
+
+</html>

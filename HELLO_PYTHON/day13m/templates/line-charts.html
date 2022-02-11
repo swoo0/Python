@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Line Charts and Options</title>
+<meta charset="UTF-8">
+<link class="include" rel="stylesheet" type="text/css" href="../jquery.jqplot.min.css" />
+<script class="include" type="text/javascript" src="jquery.min.js"></script>
+<script class="include" type="text/javascript" src="jquery.jqplot.min.js"></script>
+
+<script class="code" type="text/javascript">
+			
+	function set_s_names(){
+		var s_names = document.getElementsByClassName('s_name');
+		for (var i=0; i < a.length; i++) {
+			s_name[i].innerHTML = a[i];
+		}	
+	}		
+			
+	function drawTable() {
+		var text = `
+		<tr>
+			<td class="s_name">__</td>
+			<td class="s_name">__</td>
+			<td class="s_name">__</td>
+			<td class="s_name">__</td>
+			<td class="s_name">__</td>
+		</tr>
+		<tr>
+			<td><div id="chart1" style="height: 100px; width: 100px;"></div></td>
+			<td><div id="chart2" style="height: 100px; width: 100px;"></div></td>
+			<td><div id="chart3" style="height: 100px; width: 100px;"></div></td>
+			<td><div id="chart4" style="height: 100px; width: 100px;"></div></td>
+			<td><div id="chart5" style="height: 100px; width: 100px;"></div></td>
+		</tr>
+		`;
+			
+		var obj_mytable = document.getElementBId("mytable");
+		
+		obj_mytable.innerHTML = text;
+	}
+	
+	var name = [];		
+	
+	
+	function myinit() {
+		
+		drawTable();
+		
+		var arr = [];
+		
+ 		{% for s_name in a %}
+			a.push('{{s_name}}');
+		{% endfor %}
+			
+		{% for p in b %}
+			arr.push([{{p}}]);
+		{% endfor %}
+		
+        var names=[];
+        names.push('chart1');
+        names.push('chart2');
+        names.push('chart3');
+        names.push('chart4');
+        names.push('chart5');
+        
+		$.jqplot (names[0], arr[0]);
+		$.jqplot (names[1], arr[1]);
+		$.jqplot (names[2], arr[2]);
+		$.jqplot (names[3], arr[3]);
+		$.jqplot (names[4], arr[4]);
+		
+		set_s_names();
+	}
+	
+</script>
+
+</head>
+<body onload="myinit()">
+
+	<table id="mytable" border="1px">
+
+	</table>
+
+</body>
+</html>

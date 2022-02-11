@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Line Charts and Options</title>
+	<meta charset="UTF-8">
+    <link class="include" rel="stylesheet" type="text/css" href="../jquery.jqplot.min.css" />
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="../excanvas.js"></script><![endif]-->
+    <script class="include" type="text/javascript" src="jquery.min.js"></script>
+	<script class="include" type="text/javascript" src="jquery.jqplot.min.js"></script>
+
+
+    
+<script class="code" type="text/javascript">
+	function set_s_names(){
+		var s_names = document.getElementsByClassName("s_name");
+		for(var i=0;i<a.length;i++){
+			s_names[i].innerHTML = a[i];
+		}
+	}
+
+	function drawTable(){
+		
+		var cnt5 = a.length / 5;
+		
+		
+		var text = "";
+		
+		for (var i = 0; i < cnt5; i++) {
+			text += "<tr>";
+			text += "	<td class='s_name'>__</td>";
+			text += "	<td class='s_name'>__</td>";
+			text += "	<td class='s_name'>__</td>";
+			text += "	<td class='s_name'>__</td>";
+			text += "	<td class='s_name'>__</td>";
+			text += "</tr>";
+			
+			text += "<tr>";
+			text += "<td><div id='chart" + (5 * i + 0) + "' style='height:150px; width:150px;'></div></td>";
+			text += "<td><div id='chart" + (5 * i + 1) + "' style='height:150px; width:150px;'></div></td>";
+			text += "<td><div id='chart" + (5 * i + 2) + "' style='height:150px; width:150px;'></div></td>";
+			text += "<td><div id='chart" + (5 * i + 3) + "' style='height:150px; width:150px;'></div></td>";
+			text += "<td><div id='chart" + (5 * i + 4) + "' style='height:150px; width:150px;'></div></td>";
+			text += "</tr>";
+		}
+
+		var obj_mytable = document.getElementById("mytable");
+		
+		obj_mytable.innerHTML = text;
+		
+	}
+	
+	
+	var a = [];
+	
+	
+	function myinit(){
+		
+		var arr = [];
+		
+		{% for s_name in a %} 
+				a.push('{{s_name}}');
+		{% endfor %}		
+				
+		{% for p in b %} 
+				arr.push([{{p}}]);
+		{% endfor %}
+
+		
+		drawTable();
+
+		var names=[];
+		
+		for (var i=0; i<a.length; i++) {
+			names.push('chart' + i);
+		} 
+		
+		for (var i=0; i<a.length;i++) {
+			$.jqplot (names[i], arr[i]);
+		}
+	 	set_s_names();
+		
+	}
+	
+
+</script>
+    
+   
+</head>
+<body onload="myinit()">
+
+<table id="mytable" border="1px">
+	
+
+</table>
+
+</body>
+</html>
