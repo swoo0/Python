@@ -51,7 +51,7 @@ class DaoStock:
         from 
             stock
         group by s_name
-        LIMIT 15
+        # LIMIT 6
         """
         self.curs.execute(sql)
         mylist = self.curs.fetchall()
@@ -66,17 +66,17 @@ class DaoStock:
 if __name__ == '__main__':
     a=[]
     b=[]
-    de = DaoStock()
-    mylist = de.mys_names()
-    for n in mylist:
-        s_name = n['s_name']
-        prices = de.myprices(s_name)
-        print(s_name,prices)
-        a.append(s_name)
-        b.append(prices)
-    
-    print(a)
-    print(b)
+    # de = DaoStock()
+    # mylist = de.mys_names()
+    # for n in mylist:
+    #     s_name = n['s_name']
+    #     prices = de.myprices(s_name)
+    #     print(s_name,prices)
+    #     a.append(s_name)
+    #     b.append(prices)
+    #
+    # print(a)
+    # print(b)
 
     
     

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+	function myinit() {
+		
+		var obj_mal = document.getElementById("div_mal"); 
+		var text = "";
+		for (var i = 0; i < 10; i++) {
+			for (var j = 0; j < 9; j++) {
+				text += "<img style='position:absolute; left:" + ( j * 52 ) + "px; top:" + ( i * 44 ) + "px;' src='/images/b_cha.png' />";
+				obj_mal.innerHTML = text;
+			}
+		}
+	}
+</script>
+</head>
+<body onload="myinit()">
+
+<img style="position:absolute;" src="/images/janggipan.png" />
+
+<div id="div_mal" style="position:absolute;">
+<img style="position:absolute;" src="/images/b_cha.png" />
+</div>
+
+
+
+
+
+
+
+<!-- 	<div> -->
+
+<!-- 		<div style="position: absolute;"> -->
+<!-- 			<div style="position: relative; top: 5px; left: 0px;" style="width: 52px; height: 44px;"> -->
+<!-- 				<img src="/images/b_cha.png" /> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+
+<!-- 		<div style="position: absolute;"> -->
+<!-- 			<div style="position: relative; top: 90px; left: 360px;" style="width: 52px; height: 44px;"> -->
+<!-- 				<img src="/images/b_po.png" /> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+
+<!-- 		<img src="/images/janggipan.png" style="width: 467px; height: 456px;" /> -->
+
+<!-- 	</div> -->
+
+</body>
+</html>

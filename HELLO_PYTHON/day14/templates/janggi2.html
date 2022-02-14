@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+
+var arr2D = [
+	["h_차", "h_마", "h_상", "h_사", "e", "h_사", "h_상", "h_마", "h_차"],
+	["e", "e", "e", "e", "h_왕", "e", "e", "e", "e"],
+	["e", "h_포", "e", "e", "e", "e", "e", "h_포", "e"],
+	["h_졸", "e", "h_졸", "e", "h_졸", "e", "h_졸", "e", "h_졸"],
+	["e", "e", "e", "e", "e", "e", "e", "e", "e"],
+	["e", "e", "e", "e", "e", "e", "e", "e", "e"],
+	["b_졸", "e", "b_졸", "e", "b_졸", "e", "b_졸", "e", "b_졸"],
+	["e", "b_포", "e", "e", "e", "e", "e", "b_포", "e"],
+	["e", "e", "e", "e", "b_왕", "e", "e", "e", "e"],
+	["b_차", "b_상", "b_마", "b_사", "e", "e", "b_상", "b_마", "b_차"]
+]
+
+function myinit() {
+	mymal();
+	myrender();
+
+}
+
+function myclick() {
+	alert("myclick");
+}
+
+
+function mymal() {
+	var obj_mal = document.getElementById("div_mal"); 
+	var text = "";
+	for (var i = 0; i < 10; i++) {
+		for (var j = 0; j < 9; j++) {
+			text += "<img class='img_mal' style='position:absolute; left:"+(j*52)+"px; top:"+(i*44)+"px;' src='/images/"+"e"+".png' title='"+i+","+j+"'  onclick='myclick()' />";
+		}
+	}
+	obj_mal.innerHTML = text;
+}
+
+
+function myrender() {
+	
+	var mals = document.getElementsByClassName("img_mal"); 
+
+	for (var i = 0; i < 10; i++) {
+		for (var j = 0; j < 9; j++) {
+			mals[i*9+j].src = "images/" + arr2D[i][j] + ".png";
+		}
+	}
+}
+
+</script>
+</head>
+<body onload="myinit()">
+
+<img style="position:absolute;" src="/images/janggipan.png" />
+
+<div id="div_mal" style="position:absolute;">
+
+</div>
+
+</body>
+</html>
