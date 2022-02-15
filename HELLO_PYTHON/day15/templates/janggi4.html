@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="Tween.js"></script>
+<script src="Sequence.js"></script>
+<script src="Parallel.js"></script>
+
+<script>
+
+var arr2D = [
+	["h_차", "h_마", "h_상", "h_사", "e", "h_사", "h_상", "h_마", "h_차"],
+	["e", "e", "e", "e", "h_왕", "e", "e", "e", "e"],
+	["e", "h_포", "e", "e", "e", "e", "e", "h_포", "e"],
+	["h_졸", "e", "h_졸", "e", "h_졸", "e", "h_졸", "e", "h_졸"],
+	["e", "e", "e", "e", "e", "e", "e", "e", "e"],
+	["e", "e", "e", "e", "e", "e", "e", "e", "e"],
+	["b_졸", "e", "b_졸", "e", "b_졸", "e", "b_졸", "e", "b_졸"],
+	["e", "b_포", "e", "e", "e", "e", "e", "b_포", "e"],
+	["e", "e", "e", "e", "b_왕", "e", "e", "e", "e"],
+	["b_차", "b_상", "b_마", "b_사", "e", "b_사", "b_상", "b_마", "b_차"]
+]
+
+var can2D = [
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0, 0,0,0,0]
+]
+
+function myinit() {
+	mymal();
+	mymov();
+	myrender();
+}
+
+var status_idx = 0;
+var pre_int_i = -1;
+var pre_int_j = -1;
+
+function setCan2D(i, j) {
+	var mal_info = arr2D[i][j];
+	var arr_nm = mal_info.split("_");
+	var nation = arr_nm[0];
+	var mal = arr_nm[1];
+	var arr_i = [];
+	var arr_j = [];
+	
+	if (nation == "b" && mal == "졸") {
+		b_zol_le(i, j, arr_i, arr_j);
+		b_zol_up(i, j, arr_i, arr_j);
+		b_zol_ri(i, j, arr_i, arr_j);
+	}
+	
+	for (var i = 0; i < arr_i.length; i++) {
+		var ci = arr_i[i];
+		var cj = arr_j[i];
+		
+		can2D[ci][cj] = 1;
+	}
+}	
+
+function b_zol_le(i, j, arr_i, arr_j) {
+	j--;
+	if (j < 0) {
+		return;
+	} else {
+		if (arr2D[i][j].indexOf("b") == -1) {
+			arr_i.push(i);
+			arr_j.push(j);
+		}
+	}
+}
+function b_zol_up(i, j, arr_i, arr_j) {
+	i--;
+	if (i < 0) {
+		return;
+	} else {
+		if (arr2D[i][j].indexOf("b") == -1) {
+			arr_i.push(i);
+			arr_j.push(j);
+		}
+	}
+}
+function b_zol_ri(i, j, arr_i, arr_j) {
+	j++;
+	if (j > 8) {
+		return;
+	} else {
+		if (arr2D[i][j].indexOf("b") == -1) {
+			arr_i.push(i);
+			arr_j.push(j);
+		}
+	}
+}
+
+
+function myclick(obj) {
+	
+	var status4 = status_idx % 4;
+	var str_ij = obj.title;
+	var arr_ij = str_ij.split(",");
+	var int_i = parseInt(arr_ij[0]);
+	var int_j = parseInt(arr_ij[1]);
+	
+	if (status4 == 0 || status4 == 2) {
+		var check_mal = arr2D[int_i][int_j];
+		if (check_mal == "e") {
+			return;
+		}
+	}
+	
+	if (status4 == 0) {
+		var check_mal = arr2D[int_i][int_j];
+		if (check_mal.indexOf("b") == -1) {
+			alert("한나라 차례 입니다.")
+			return;
+		}
+	}
+	
+	if (status4 == 2) {
+		var check_mal = arr2D[int_i][int_j];
+		if (check_mal.indexOf("h") == -1) {
+			alert("초나라 차례 입니다.")
+			return;
+		}
+	}
+	
+	if (status4 == 0 || status4 == 2) {
+		pre_int_i = int_i;
+		pre_int_j = int_j;
+		
+		setCan2D(int_i, int_j);
+		mycander();
+	}		
+	
+	if (status4 == 1 || status4 == 3) {
+		if (pre_int_i == int_i && pre_int_j == int_j) {
+			return;
+		}
+		
+		var pre_mal = arr2D[pre_int_i][pre_int_j];
+		
+		arr2D[pre_int_i][pre_int_j] = "e";
+		myrender();
+		arr2D[int_i][int_j] = pre_mal;
+		
+		var pre_x = pre_int_j * 52;
+		var pre_y = pre_int_i * 44;
+		var mov_x = int_j * 52;
+		var mov_y = int_i * 44;
+		
+		var i = document.getElementById("img_fak");
+		i.src = "images/" + pre_mal + ".png";
+		var p = new Parallel();
+		p.addChild(new Tween(i.style, 'left', Tween.regularEaseIn, pre_x, mov_x, 0.1, 'px'));
+		p.addChild(new Tween(i.style, 'top', Tween.regularEaseIn, pre_y, mov_y, 0.1, 'px'));
+		p.start()
+		
+		pre_int_i = -1;
+		pre_int_j = -1;
+		
+		setTimeout(myrender, 100);
+// 		myrender();
+	}
+	status_idx++;
+}	
+
+
+
+function mymov() {
+	var obj_mal = document.getElementById("div_mov"); 
+	var text = "";
+	for (var i = 0; i < 10; i++) {
+		for (var j = 0; j < 9; j++) {
+			text += "<img class='img_mov' style='position:absolute; left:"+(j*52)+"px; top:"+(i*44)+"px;' src='/images/"+"e"+".png' />";
+		}
+	}
+	obj_mal.innerHTML = text;
+}
+
+function mycander() {
+	
+	var movs = document.getElementsByClassName("img_mov"); 
+
+	for (var i = 0; i < 10; i++) {
+		for (var j = 0; j < 9; j++) {
+			if (can2D[i][j] == 0) {
+				movs[i*9+j].src = "images/e.png";
+			}
+			if (can2D[i][j] == 1) 
+			movs[i*9+j].src = "images/moveable.png";
+		}
+	}
+}
+
+function mymal() {
+	var obj_mal = document.getElementById("div_mal"); 
+	var text = "";
+	for (var i = 0; i < 10; i++) {
+		for (var j = 0; j < 9; j++) {
+			text += "<img class='img_mal' style='position:absolute; left:"+(j*52)+"px; top:"+(i*44)+"px;' src='/images/"+"e"+".png' title='"+i+","+j+"'  onclick='myclick(this)' />";
+		}
+	}
+	obj_mal.innerHTML = text;
+}
+
+
+function myrender() {
+	
+	var mals = document.getElementsByClassName("img_mal"); 
+
+	for (var i = 0; i < 10; i++) {
+		for (var j = 0; j < 9; j++) {
+			mals[i*9+j].src = "images/" + arr2D[i][j] + ".png";
+		}
+	}
+}
+
+</script>
+</head>
+
+<body onload="myinit()">
+
+<img style="position:absolute;" src="/images/janggipan.png" />
+
+<div id="div_mov" style="position:absolute;">
+</div>
+
+<div id="div_fak" style="position:absolute;">
+	<img id='img_fak' style='position:absolute; left:-100px; top:-100px;' src='images/mask_big.png' />
+</div>
+
+<div id="div_mal" style="position:absolute;">
+</div>
+
+
+</body>
+</html>

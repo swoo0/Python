@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tween Test</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="Tween.js"></script>
+<script src="Sequence.js"></script>
+<script src="Parallel.js"></script>
+</head>
+<body>
+
+	<div>
+		<img id="king" src="images/h_왕.png" style="position:relative; left:0px;" />
+	</div>
+	
+	<input type="button" value="move" onclick="myparallel()">
+
+
+<script>
+
+function myparallel() {
+	var i = document.getElementById("king");
+	var p = new Parallel();
+	p.addChild(new Tween(i.style, 'left', Tween.regularEaseIn, 0, 500, 1, 'px'));
+	p.addChild(new Tween(i.style, 'top', Tween.regularEaseIn, 0, 500, 1, 'px'));
+	p.start()
+}
+
+
+function myserial() {
+	var seq = new Sequence();
+	var i = document.getElementById("king");
+	seq.addChild(new Tween(i.style, 'left', Tween.regularEaseIn, 0, 500, 1, 'px'));
+	seq.addChild(new Tween(i.style, 'top', Tween.regularEaseIn, 0, 500, 1, 'px'));
+	seq.start()
+}
+
+function myclick() {
+	var i = document.getElementById("king");
+	var t = new Tween(i.style, 'left', Tween.regularEaseIn, 0, 500, 1, 'px').start();
+}
+
+</script>
+</body>
+</html>
+
+
+<!-- <script type="text/javascript" src="Tween.js"></script> -->
+<!-- ... -->
+<!-- var i = document.getElementById("smiley1"); -->
+<!-- var t = new Tween(i.style, 'left', Tween.elasticEaseOut, 0, 500, 1, 'px');  -->
+<!-- t.start();     -->
+    
+<!-- Object -->
+
+<!-- <img src="smileyFace.jpg" id="smiley1" style="position: relative; left: 0px;">  -->
